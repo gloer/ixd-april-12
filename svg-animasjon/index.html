@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG-animasjon</title>
+    <style>
+        svg {
+            background-color: orange;
+        }
+
+        #linja {
+            animation: tegning 8s both;
+        }
+
+        @keyframes tegning {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        #animasjon {
+            width: 950px;
+            height: 500px;
+            position: relative;
+        }
+
+        #mari {
+            font-size: 32px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: rotate(90deg);
+            offset-distance: 0%;
+            offset-path: path("M16.375,205.867188 C16.375,113.21875 25.0234375,112.664063 117.136719,74.0820312 C209.25,35.5 362.15625,-56.578125 401.417969,52.7734375 C440.679688,162.125 542.96875,137.972656 393.175781,205.867188 C243.382813,273.761719 191.703125,381.164063 117.136719,310.242187 C42.5703125,239.320312 -68.7421875,282.667969 60.7734375,200.082031 C190.289063,117.496094 5.6328125,71.5234375 270.742188,86.1914062 C535.851563,100.859375 598.886719,-77.8945312 722.386719,74.0820312 C845.886719,226.058594 1011.61719,357.738281 776.878906,339.671875 C542.140625,321.605469 427.664062,297.363281 422.085937,297.363281 C416.507812,297.363281 293.972656,163.355469 293.972656,154.863281 C293.972656,146.371094 248.757812,173.015625 169.238281,205.867187 C89.71875,238.71875 16.375,298.515625 16.375,205.867188 Z");
+            animation: walk 8s both;
+        }
+
+        @keyframes walk {
+            to {
+                offset-distance: 100%;
+            }
+        }
+
+    </style>
+    
+</head>
+<body>
+
+    <div id="animasjon">
+        
+        <div id="mari">🐞</div>
+
+    </div>
+
+    <script>
+    
+        const linja = document.querySelector("#linja");
+        
+        const lengde = linja.getTotalLength();
+
+        linja.style.strokeDasharray = lengde;
+        linja.style.strokeDashoffset = lengde;
+        console.log(lengde);
+        
+    
+
+    </script>
+    
+</body>
+</html>
